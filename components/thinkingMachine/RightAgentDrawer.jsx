@@ -16,6 +16,22 @@ import NodeDetailCard from "@/components/thinkingMachine/cards/NodeDetailCard";
 import CandidateGraphCard from "@/components/thinkingMachine/cards/CandidateGraphCard";
 const DRAWER_TOP_SAFE_ZONE = 4;
 
+function MicButtonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-[18px] w-[18px]">
+      <rect x="9" y="3.5" width="6" height="10" rx="3" fill="currentColor" />
+      <path
+        d="M6.5 10.5C6.5 13.5376 8.96243 16 12 16C15.0376 16 17.5 13.5376 17.5 10.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path d="M12 16V20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M8.5 20H15.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function parseStage(stage) {
   const value = normalizeReasoningStage(stage);
   const isDesign = value.startsWith("design-");
@@ -98,6 +114,7 @@ export default function RightAgentDrawer({
         workspaceTab: "Workspace",
         note: "노트",
         image: "이미지",
+        voice: "음성",
       }
     : {
         emptyChat: "Select a node, drag it to the right, and drop it to attach it as chat context.",
@@ -108,6 +125,7 @@ export default function RightAgentDrawer({
         workspaceTab: "Workspace",
         note: "Note",
         image: "Image",
+        voice: "Voice",
       };
 
   useEffect(() => {
@@ -446,6 +464,14 @@ export default function RightAgentDrawer({
                         title={copy.image}
                       >
                         <ImageIcon className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/78 text-slate-600 shadow-[0_6px_14px_rgba(0,0,0,0.07)] transition hover:bg-white"
+                        aria-label={copy.voice}
+                        title={copy.voice}
+                      >
+                        <MicButtonIcon />
                       </button>
                     </div>
 
