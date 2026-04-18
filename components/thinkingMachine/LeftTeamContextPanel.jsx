@@ -54,7 +54,7 @@ export default function LeftTeamContextPanel({
   const items = Array.isArray(activityItems) ? activityItems : [];
 
   return (
-    <div className="pointer-events-none absolute left-5 top-[50px] z-[58]">
+    <div className="pointer-events-none absolute left-[21px] top-[54px] z-[58]">
       <div className="pointer-events-auto relative">
         <button
           type="button"
