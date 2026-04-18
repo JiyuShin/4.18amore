@@ -79,7 +79,7 @@ export default function TopBarProjectBreadcrumb({
                 }
               }}
               autoFocus
-              className="w-full border-none bg-transparent px-0 py-0 text-[14px] font-medium text-slate-800 outline-none shadow-none"
+              className="w-full border-none bg-transparent px-0 py-0 text-[16px] font-medium text-slate-800 outline-none shadow-none"
               style={TOPBAR_CENTER_TEXT_STYLE}
               aria-label="Project title"
               transition={{ layout: { duration: 0.28, ease: [0.22, 1, 0.36, 1] } }}
@@ -89,7 +89,7 @@ export default function TopBarProjectBreadcrumb({
               layout="position"
               type="button"
               onClick={() => setIsEditingTitle(true)}
-              className="max-w-full truncate text-left text-[14px] font-medium text-slate-700/88 transition hover:text-slate-900"
+              className="max-w-full truncate text-left text-[16px] font-medium text-slate-700/88 transition hover:text-slate-900"
               style={TOPBAR_CENTER_TEXT_STYLE}
               aria-label="Edit project title"
               title="Rename project"

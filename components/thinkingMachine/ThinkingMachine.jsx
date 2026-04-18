@@ -41,6 +41,7 @@ const ADMIN_HINT_DISMISSED_KEY = "vtm-admin-shortcut-hint-dismissed";
 const MOCK_CURRENT_USER_ID = "mock-user-1";
 const MOCK_CURRENT_USER_ROLE = "owner";
 const AUTO_FIT_MAX_ZOOM = 1;
+const DRAWER_VIEWPORT_RESERVE = 430;
 
 function cubicOut(t) {
     return 1 - Math.pow(1 - t, 3);
@@ -285,6 +286,9 @@ export default function ThinkingMachine({
         const canvasElement = document.querySelector(".tm-canvas-flow");
         const viewportWidth = canvasElement?.clientWidth ?? window.innerWidth;
         const viewportHeight = canvasElement?.clientHeight ?? window.innerHeight;
+        const safeViewportWidth = isDrawerOpen
+            ? Math.max(320, viewportWidth - DRAWER_VIEWPORT_RESERVE)
+            : viewportWidth;
         if (typeof inst.setViewport === "function") {
             requestAnimationFrame(() => {
                 const nextViewport = getViewportForBounds(
@@ -294,7 +298,7 @@ export default function ThinkingMachine({
                         width: Math.max(260, bounds.maxX - bounds.minX) + 144,
                         height: Math.max(220, bounds.maxY - bounds.minY) + 144,
                     },
-                    viewportWidth,
+                    safeViewportWidth,
                     viewportHeight,
                     0.2,
                     AUTO_FIT_MAX_ZOOM,
@@ -302,12 +306,12 @@ export default function ThinkingMachine({
                 );
                 nextViewport.zoom = Math.min(nextViewport.zoom, AUTO_FIT_MAX_ZOOM);
                 inst.setViewport(nextViewport, {
-                    duration: 700,
+                    duration: 480,
                     ease: cubicOut,
                 });
             });
         }
-    }, []);
+    }, [isDrawerOpen]);
 
     useEffect(() => {
         let cancelled = false;

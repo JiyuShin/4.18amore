@@ -22,7 +22,7 @@ export default function IdeaGroupNode({ id, data, selected }) {
 
   return (
     <div
-      className={`relative h-full w-full rounded-[24px] border ${
+      className={`tm-node-appear relative h-full w-full rounded-[24px] border ${
         selected ? "border-teal-300/70 ring-2 ring-teal-200/50" : "border-white/45"
       } bg-white/12 shadow-[0_12px_28px_rgba(0,0,0,0.10)]`}
     >

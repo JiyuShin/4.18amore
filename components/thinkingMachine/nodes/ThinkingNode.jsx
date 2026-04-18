@@ -84,7 +84,7 @@ export default function ThinkingNode({ data = {} }) {
   return (
     <div className="relative h-full w-full">
       <div className="flex h-full w-full flex-col">
-        <div className="relative w-full rounded-[18px] border border-white/60 bg-white/30 px-3 pt-4 pb-4 shadow-[0_14px_32px_rgba(15,23,42,0.14)] backdrop-blur-[18px]">
+        <div className="tm-node-appear relative w-full rounded-[18px] border border-white/60 bg-white/30 px-3 pt-4 pb-4 shadow-[0_14px_32px_rgba(15,23,42,0.14)] backdrop-blur-[18px]">
           <div className="mb-3 text-center text-[11px] font-semibold" style={{ color: "#194312" }}>
             {data.category}
           </div>

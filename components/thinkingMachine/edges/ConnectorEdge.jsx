@@ -136,12 +136,16 @@ function buildOrganicBezierPath(points, tension = DEFAULT_CURVE_TENSION) {
   const dx = end.x - start.x;
   const dy = end.y - start.y;
   const spanX = Math.abs(dx);
-  const controlDistance = Math.min(Math.max(spanX * (0.34 + tension * 0.12), 56), 168);
-  const verticalEase = Math.min(Math.abs(dy) * 0.16, 36);
+  const halfSpanCap = Math.max(18, spanX / 2 - 10);
+  const controlDistance = Math.min(
+    halfSpanCap,
+    Math.min(Math.max(spanX * (0.42 + tension * 0.16), 34), 220)
+  );
+  const verticalEase = Math.min(Math.abs(dy) * 0.08, 18);
   const cp1x = start.x + controlDistance;
   const cp2x = end.x - controlDistance;
-  const cp1y = start.y + (dy >= 0 ? verticalEase : -verticalEase) * 0.25;
-  const cp2y = end.y - (dy >= 0 ? verticalEase : -verticalEase) * 0.25;
+  const cp1y = start.y + (dy >= 0 ? verticalEase : -verticalEase) * 0.12;
+  const cp2y = end.y - (dy >= 0 ? verticalEase : -verticalEase) * 0.12;
 
   return `M ${round(start.x)} ${round(start.y)} C ${round(cp1x)} ${round(cp1y)} ${round(cp2x)} ${round(cp2y)} ${round(end.x)} ${round(end.y)}`;
 }
